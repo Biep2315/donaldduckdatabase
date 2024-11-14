@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donald Duck Database</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="filters-container">
+        <!-- Filters blijven altijd zichtbaar bovenaan -->
+        <h1>Donald Duck Database</h1>
+        
+        <div class="filters">
+            <label for="jaar">Jaar:</label>
+            <select id="jaar">
+                <option value="Alle">Alle</option>
+                <!-- Dynamisch de jaartallen toevoegen via JS -->
+            </select>
+
+            <label for="week">Week:</label>
+            <select id="week">
+                <option value="Alle">Alle</option>
+                <!-- Dynamisch de weken toevoegen via JS -->
+            </select>
+
+            <label for="locatie">Locatie:</label>
+            <input type="text" id="locatie" placeholder="Zoek locatie...">
+
+            <label for="beschadigd">Beschadigd:</label>
+            <select id="beschadigd">
+                <option value="Alle">Alle</option>
+                <option value="Ja">Ja</option>
+                <option value="Nee">Nee</option>
+            </select>
+
+            <button onclick="filterData()">Filter</button>
+
+            <!-- Toevoegen van de teller -->
+            <div id="resultCount" class="result-count">Aantal resultaten: 0</div>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <!-- Tabel waar de gefilterde data komt -->
+        <table id="donaldDuckTable">
+            <thead>
+                <tr>
+                    <th>Jaar</th>
+                    <th>Week</th>
+                    <th>Beschadigd</th>
+                    <th>Locatie</th>
+                    <th>Opmerkingen</th>
+                    <th>Serienr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamisch de rijen toevoegen via JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

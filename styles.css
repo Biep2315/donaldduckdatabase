@@ -1,0 +1,133 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filters-container {
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;           /* Zorg ervoor dat het niet verkleint op mobiel */
+    height: auto;
+    max-height: 25vh;       /* Zorg ervoor dat de filtercontainer maximaal 25% van de schermhoogte is */
+    overflow-y: auto;         /* Sta verticaal scrollen toe als de inhoud te groot is */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Pas filters-styling aan om uitlijning en ruimte beter te regelen */
+.filters {
+    display: flex;
+    justify-content: center; /* Center de filters */
+    flex-wrap: wrap;         /* Breek naar een nieuwe regel als nodig */
+    gap: 10px;               /* Meer ruimte tussen filter-items */
+    align-items: center;
+    max-width: 1200px;       /* Beperk de breedte van de filters */
+    margin: 0 auto;          /* Centreer de filters in de container */
+}
+
+.filters label {
+    margin-right: 5px;       /* Minder ruimte tussen label en input/select */
+    white-space: nowrap;     /* Zorg ervoor dat labels op één regel blijven */
+}
+
+.filters select, .filters input {
+    padding: 8px;
+    width: 120px;            /* Iets smallere breedte voor betere uitlijning */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.table-container {
+    width: 80%;
+    max-width: 1200px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+/* Media queries voor mobielvriendelijkere weergave */
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column; /* Zet filters onder elkaar op kleinere schermen */
+        align-items: stretch;   /* Zorg dat ze de hele breedte innemen */
+    }
+
+    .filters label {
+        margin-bottom: 5px;      /* Wat ruimte tussen label en input */
+    }
+
+    .filters select, .filters input {
+        width: 100%;             /* Maak de invoervelden breder op mobiele schermen */
+        margin-bottom: 10px;     /* Ruimte tussen velden */
+    }
+
+    button {
+        width: 100%;             /* Maak de knop breed voor betere drukbaarheid op mobiel */
+    }
+
+    .table-container {
+        width: 100%;             /* Maak de tabelcontainer breder op kleinere schermen */
+        padding: 10px;           /* Verminder de padding voor kleinere schermen */
+    }
+
+    table th, table td {
+        padding: 8px;            /* Verminder de padding van tabelcellen voor kleinere schermen */
+    }
+}
+
+@media (max-width: 480px) {
+    .filters {
+        gap: 10px;              /* Verminder de ruimte tussen de filters */
+    }
+
+    h1 {
+        font-size: 18px;        /* Maak de titel iets kleiner op kleine schermen */
+    }
+}
