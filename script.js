@@ -86,6 +86,8 @@ function filterData() {
         }
     }
 
+    filteredData.sort((a, b) => b[0] - a[0] || b[1] - a[1]);
+
     // Vul de tabel met de gefilterde gegevens
     filteredData.forEach(row => {
         const tr = document.createElement("tr");
