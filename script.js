@@ -105,5 +105,10 @@ function filterData() {
 }
 
 
+// script.js
+function toggleMenu() {
+    const menu = document.getElementById('filtersContainer');
+    menu.classList.toggle('open'); // Toggle de 'open' klasse om het menu in en uit te schuiven
+}
 
 
