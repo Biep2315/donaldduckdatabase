@@ -8,21 +8,25 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <div class="filters-container">
-        <!-- Filters blijven altijd zichtbaar bovenaan -->
+    <!-- Hamburger menu voor mobiel -->
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <!-- Filtercontainer die uitschuift vanaf de linkerkant -->
+    <div class="filters-container" id="filtersContainer">
         <h1>Donald Duck Database</h1>
-        
         <div class="filters">
             <label for="jaar">Jaar:</label>
             <select id="jaar">
                 <option value="Alle">Alle</option>
-                <!-- Dynamisch de jaartallen toevoegen via JS -->
             </select>
 
             <label for="week">Week:</label>
             <select id="week">
                 <option value="Alle">Alle</option>
-                <!-- Dynamisch de weken toevoegen via JS -->
             </select>
 
             <label for="locatie">Locatie:</label>
@@ -37,13 +41,12 @@
 
             <button onclick="filterData()">Filter</button>
 
-            <!-- Toevoegen van de teller -->
             <div id="resultCount" class="result-count">Aantal resultaten: 0</div>
         </div>
     </div>
 
+    <!-- Tabel van de resultaten -->
     <div class="table-container">
-        <!-- Tabel waar de gefilterde data komt -->
         <table id="donaldDuckTable">
             <thead>
                 <tr>
