@@ -1,3 +1,6 @@
+// script.js
+
+// data ophalen
 let data = null;
 
 fetch('data.json')
@@ -9,7 +12,6 @@ fetch('data.json')
     })
     .then(jsonData => {
         data = jsonData;
-        console.log(data)
         loadYears();
         loadWeeks();
         filterData();
@@ -18,6 +20,9 @@ fetch('data.json')
         console.error('Er is een fout opgetreden bij het ophalen van de JSON:', error);
     });
 
+
+
+// Functie om de jaaropties te laden
 function loadYears() {
     const yearSelect = document.getElementById("jaar");
     const years = Object.keys(data.weekblad);
@@ -29,9 +34,12 @@ function loadYears() {
     });
 }
 
+// Functie om de weekopties te laden
 function loadWeeks() {
     const weekSelect = document.getElementById("week");
-    weekSelect.innerHTML = "<option value='Alle'>Alle</option>";
+    weekSelect.innerHTML = "<option value='Alle'>Alle</option>";  // Reset de weken
+
+    // Voeg de weken 1 t/m 52 toe
     for (let week = 1; week <= 52; week++) {
         const option = document.createElement("option");
         option.value = week;
@@ -40,6 +48,7 @@ function loadWeeks() {
     }
 }
 
+// Functie om de tabel te filteren en weer te geven
 function filterData() {
     const jaar = document.getElementById("jaar").value;
     const week = document.getElementById("week").value;
@@ -47,61 +56,80 @@ function filterData() {
     const beschadigd = document.getElementById("beschadigd").value;
 
     const tableBody = document.getElementById("donaldDuckTable").getElementsByTagName("tbody")[0];
-    tableBody.innerHTML = "";
+    tableBody.innerHTML = ""; // Leeg de tabel
 
     let filteredData = [];
 
+    // Filter de data
     for (const year in data.weekblad) {
+        // Filter op jaar als het niet "Alle" is
         if (jaar !== "Alle" && year !== jaar) continue;
 
         for (const w in data.weekblad[year]) {
+            // Filter op week als het niet "Alle" is
             if (week !== "Alle" && w !== week) continue;
 
             data.weekblad[year][w].forEach(item => {
-                if (
-                    (locatie && !item.locatie.toLowerCase().includes(locatie)) ||
-                    (beschadigd !== "Alle" && item.beschadigd !== beschadigd)
-                ) {
+                const [isDamaged, location, remarks, serialNr] = item;
+
+                if (beschadigd !== "Alle" && (beschadigd === "Ja" ? !isDamaged : isDamaged)) {
                     return;
                 }
-                filteredData.push(item);
+
+
+                if (locatie && !location.toLowerCase().includes(locatie)) {
+                    return;
+                }
+
+                filteredData.push([year, w, isDamaged ? "Ja" : "Nee", location, remarks, serialNr]);
             });
         }
     }
 
-    filteredData.forEach(item => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${item.jaar}</td>
-            <td>${item.week}</td>
-            <td>${item.beschadigd}</td>
-            <td>${item.locatie}</td>
-            <td>${item.opmerkingen}</td>
-            <td>${item.serienr}</td>
-        `;
-        tableBody.appendChild(row);
+    filteredData.sort((a, b) => b[0] - a[0] || b[1] - a[1]);
+
+    // Vul de tabel met de gefilterde gegevens
+    filteredData.forEach(row => {
+        const tr = document.createElement("tr");
+        row.forEach(cell => {
+            const td = document.createElement("td");
+            td.textContent = cell;
+            tr.appendChild(td);
+        });
+        tableBody.appendChild(tr);
     });
 
-    document.getElementById("resultCount").textContent = `Aantal resultaten: ${filteredData.length}`;
-    showScrollToTopButton();
+    // Update de teller
+    const resultCount = document.getElementById("resultCount");
+    resultCount.textContent = `Aantal resultaten: ${filteredData.length}`;
 }
 
+
+// script.js
 function toggleMenu() {
-    const menu = document.getElementById("filtersContainer");
-    menu.classList.toggle("open");
+    const menu = document.getElementById('filtersContainer');
+    menu.classList.toggle('open'); // Toggle de 'open' klasse om het menu in en uit te schuiven
 }
 
+// Scroll naar boven functie
 function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Zorg voor een vloeiende overgang naar de top
+    });
 }
 
-function showScrollToTopButton() {
-    const button = document.getElementById("scrollToTopBtn");
-    if (window.scrollY > 100) {
-        button.style.display = "block";
+// Het knopje weergeven/verbergen op basis van scrollpositie
+window.onscroll = function() {
+    var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    // Als we naar beneden scrollen, toon de knop, anders verberg hem
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        scrollToTopBtn.style.display = "block";
     } else {
-        button.style.display = "none";
+        scrollToTopBtn.style.display = "none";
     }
-}
+};
 
-window.addEventListener("scroll", showScrollToTopButton);
+
+
