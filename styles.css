@@ -1,4 +1,3 @@
-/* styles.css */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -11,30 +10,34 @@ body {
     width: 100%;
 }
 
-/* Terug omhoog knop styling */
 #scrollToTopBtn {
     position: fixed;
-    bottom: 20px; /* Plaats het 20px boven de onderkant van het scherm */
-    right: 20px;  /* Plaats het 20px vanaf de rechterkant van het scherm */
-    background-color: #4CAF50; /* Groene achtergrondkleur */
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 50%; /* Maak het knopje rond */
+    border-radius: 50%;
     width: 40px;
     height: 40px;
     font-size: 20px;
-    display: none; /* Standaard is de knop verborgen */
+    display: none;
     cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Schaduw voor diepte */
-    transition: opacity 0.3s ease; /* Zorg voor een vloeiende overgang */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease;
+    padding: 0;
+    text-align: center;
+    line-height: 40px;
+}
+
+#scrollToTopBtn span {
+    font-size: 28px;
 }
 
 #scrollToTopBtn:hover {
-    background-color: #45a049; /* Verander kleur als je erover hovert */
+    background-color: #45a049;
 }
 
-
-/* Voeg deze regel toe aan je CSS om het 'Aantal resultaten' altijd zichtbaar te maken */
 .result-count {
     position: fixed;
     top: 10px;
@@ -45,11 +48,9 @@ body {
     border-radius: 5px;
     z-index: 100;
     font-size: 14px;
-    color: #fff
+    color: #fff;
 }
 
-
-/* Hamburger menu styling */
 .hamburger-menu {
     display: none;
     cursor: pointer;
@@ -73,7 +74,6 @@ body {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Filter container */
 .filters-container {
     position: fixed;
     left: -100%;
@@ -86,7 +86,6 @@ body {
     transition: left 0.3s ease-in-out;
     z-index: 101;
     overflow-y: auto;
-
 }
 
 .filters-container.open {
@@ -128,7 +127,6 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Zorg ervoor dat de tabel de resterende ruimte inneemt */
 .table-container {
     width: 100%;
     background-color: #fff;
@@ -137,11 +135,10 @@ button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
     overflow-x: auto;
-    margin-left: 260px; /* De tabel begint na de filtercontainer */
+    margin-left: 260px;
     flex-grow: 1;
 }
 
-/* Tabellen styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -158,7 +155,6 @@ table th {
     background-color: #f2f2f2;
 }
 
-/* Media queries voor mobielvriendelijke weergave */
 @media (max-width: 768px) {
     .hamburger-menu {
         display: flex;
@@ -180,7 +176,7 @@ table th {
     }
 
     table {
-        padding-left: 0;  /* Geen padding op mobiel */
+        padding-left: 0;
         padding-right: 0;
     }
 }
@@ -195,7 +191,7 @@ table th {
     }
 
     .table-container {
-        margin-left: 260px; /* Zorg dat de tabel niet over de filters valt */
+        margin-left: 260px;
     }
 
     table {
@@ -203,4 +199,3 @@ table th {
         border-collapse: separate;
     }
 }
-
