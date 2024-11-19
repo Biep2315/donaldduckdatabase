@@ -9,6 +9,7 @@ fetch('data.json')
     })
     .then(jsonData => {
         data = jsonData;
+        console.log(data)
         loadYears();
         loadWeeks();
         filterData();
@@ -16,7 +17,7 @@ fetch('data.json')
     .catch(error => {
         console.error('Er is een fout opgetreden bij het ophalen van de JSON:', error);
     });
-console.log(data)
+
 function loadYears() {
     const yearSelect = document.getElementById("jaar");
     const years = Object.keys(data.weekblad);
