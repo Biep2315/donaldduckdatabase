@@ -111,4 +111,25 @@ function toggleMenu() {
     menu.classList.toggle('open'); // Toggle de 'open' klasse om het menu in en uit te schuiven
 }
 
+// Scroll naar boven functie
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Zorg voor een vloeiende overgang naar de top
+    });
+}
+
+// Het knopje weergeven/verbergen op basis van scrollpositie
+window.onscroll = function() {
+    var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    // Als we naar beneden scrollen, toon de knop, anders verberg hem
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+};
+
+
 
