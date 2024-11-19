@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,8 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+    <div id="resultCount" class="result-count">Aantal resultaten: 0</div>
+
     <div class="hamburger-menu" onclick="toggleMenu()">
         <div class="line"></div>
         <div class="line"></div>
@@ -39,7 +41,6 @@
 
             <button onclick="filterData()">Filter</button>
 
-            <div id="resultCount" class="result-count">Aantal resultaten: 0</div>
         </div>
     </div>
 
@@ -62,5 +63,8 @@
     </div>
     
     <script src="script.js"></script>
+
+<button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+
 </body>
 </html>
