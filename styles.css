@@ -11,6 +11,44 @@ body {
     width: 100%;
 }
 
+/* Terug omhoog knop styling */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px; /* Plaats het 20px boven de onderkant van het scherm */
+    right: 20px;  /* Plaats het 20px vanaf de rechterkant van het scherm */
+    background-color: #4CAF50; /* Groene achtergrondkleur */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Maak het knopje rond */
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    display: none; /* Standaard is de knop verborgen */
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Schaduw voor diepte */
+    transition: opacity 0.3s ease; /* Zorg voor een vloeiende overgang */
+}
+
+#scrollToTopBtn:hover {
+    background-color: #45a049; /* Verander kleur als je erover hovert */
+}
+
+
+/* Voeg deze regel toe aan je CSS om het 'Aantal resultaten' altijd zichtbaar te maken */
+.result-count {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 100;
+    font-size: 14px;
+    color: #fff
+}
+
+
 /* Hamburger menu styling */
 .hamburger-menu {
     display: none;
@@ -18,7 +56,7 @@ body {
     position: fixed;
     top: 1px;
     left: 1px;
-    z-index: 101;
+    z-index: 102;
     padding: 10px;
     width: 35px;
     height: 35px;
@@ -46,7 +84,9 @@ body {
     padding: 20px;
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
     transition: left 0.3s ease-in-out;
-    z-index: 100;
+    z-index: 101;
+    overflow-y: auto;
+
 }
 
 .filters-container.open {
@@ -145,7 +185,6 @@ table th {
     }
 }
 
-/* Alleen voor desktop (groter dan 768px) */
 @media (min-width: 769px) {
     .hamburger-menu {
         display: none;
@@ -156,9 +195,12 @@ table th {
     }
 
     .table-container {
-        margin-left: 260px;
+        margin-left: 260px; /* Zorg dat de tabel niet over de filters valt */
     }
+
     table {
         padding: 0 20px;
         border-collapse: separate;
+    }
 }
+
