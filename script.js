@@ -59,15 +59,7 @@ function filterData() {
     tableBody.innerHTML = ""; // Leeg de tabel
 
     let filteredData = [];
-
-    // Bereken unieke combinaties van jaar + week
-    const uniekeCombinaties = new Set(filteredData.map(item => `${item[0]}-${item[1]}`));
-
-    // Update de teller voor unieke weekbladen
-    const uniqueCount = document.getElementById("uniqueCount");
-    uniqueCount.textContent = `Unieke weekbladen: ${uniekeCombinaties.size}`;
     
-
     // Filter de data
     for (const year in data.weekblad) {
         // Filter op jaar als het niet "Alle" is
@@ -110,6 +102,12 @@ function filterData() {
     // Update de teller
     const resultCount = document.getElementById("resultCount");
     resultCount.textContent = `Aantal resultaten: ${filteredData.length}`;
+
+    // Bereken unieke combinaties van jaar + week, om de uniek-teller te updaten
+    const uniekeCombinaties = new Set(filteredData.map(item => `${item[0]}-${item[1]}`));
+    // Update de teller voor unieke weekbladen
+    const uniqueCount = document.getElementById("uniqueCount");
+    uniqueCount.textContent = `Unieke weekbladen: ${uniekeCombinaties.size}`;
 }
 
 
