@@ -107,7 +107,7 @@ function filterData() {
     const uniekeCombinaties = new Set(filteredData.map(item => `${item[0]}-${item[1]}`));
     // Update de teller voor unieke weekbladen
     const uniqueCount = document.getElementById("uniqueCount");
-    uniqueCount.textContent = `Unieke weekbladen: ${uniekeCombinaties.size}`;
+    uniqueCount.textContent = `Waarvan uniek: ${uniekeCombinaties.size}`;
 }
 
 
