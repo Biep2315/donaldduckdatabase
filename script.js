@@ -104,6 +104,7 @@ function filterData() {
     resultCount.textContent = `Aantal resultaten: ${filteredData.length}`;
 
     // Bereken unieke combinaties van jaar + week, om de uniek-teller te updaten
+    console.log("filteredData:", filteredData);
     const uniekeCombinaties = new Set(filteredData.map(item => `${item[0]}-${item[1]}`));
     // Update de teller voor unieke weekbladen
     const uniqueCount = document.getElementById("uniqueCount");
